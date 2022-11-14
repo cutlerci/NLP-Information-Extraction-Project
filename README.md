@@ -41,7 +41,7 @@ This file may be too big to download, however, so you can use this public google
 
 
 <p align="center">
- <img src="./ZIP Extractor.PNG" width="750" height="500">
+ <img src="./ZIP Extractor.png" width="750" height="500">
 </p>
 
 You can skip the downloads of  _____________ and ProcessedLitBankDataset.csv if you already have downloaded the whole project as a zip file. This can be done by clicking on the green button that says "code" in the main directory of the github page (same directory as this README), and then clicking on "Download ZIP".
@@ -93,8 +93,11 @@ If a word or symbol is not considerred any of the above enities it is marked wit
 
 The 100 files can be found in the  Data sub-directory in the Original Data ( TSV Format ) folder. Each novels or short storiy is stored as an individual TSV file.
 
-The original dataset has nested named entities. For example INSERT NESTED PHOTO
+The original dataset has nested named entities. For example, 
 
+<p align="center">
+ <img src="./nested_structure.png" width="720" height="240">
+</p>
 
 ## Cleaned Data
 After using the "collapseNestedNamedEntities.py" python script that we wrote we obtained a cleaner version of the LitBank dataset. Specifically we did the following preproccesing tasks to clean the data into the format we wanted for training our model:
