@@ -89,9 +89,8 @@ We use dthe LitBank dataset that can be found online at: [LitBank](https://githu
 * Locations (LOC): *the forest*, *the river*
 * Vehicles (VEH): *the ship*, *the car*
 * Organizations (ORG): *the army*, *the Church*
-If a word or symbol is not considerred any of the above enities it is marked with an *O*.
 
-The 100 files can be found in the  Data sub-directory in the Original Data ( TSV Format ) folder. Each novels or short storiy is stored as an individual TSV file.
+If a word or symbol is not considerred any of the above enities it is marked with an *O*. The 100 files can be found in the  Data sub-directory in the Original Data ( TSV Format ) folder. Each novels or short storiy is stored as an individual TSV file.
 
 The original dataset has nested named entities. For example, 
 
