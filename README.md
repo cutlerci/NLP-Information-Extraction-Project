@@ -106,3 +106,26 @@ After using the "collapseNestedNamedEntities.py" python script that we wrote we 
 This clean version of the dataset can be found in the Data sub-directory as "ProcessedLitBankDataset.csv"
 
 We split the data set into three pieces for use in training and evaluation of the model. We use an __ train, __ development or validation, and __ test split.
+
+# Results
+The following table displays results we obtained when training the model with the entire training data subset.
+
+![Results](./OverallResults.png "Overall Results")
+
+We were interested in how much data we actually need to train a model to do well. To investigate this we conducted an ablation study, using smaller and smaller subsets of the training data to train a model. The following sections describe the results we found. 
+
+## Confusion Matrix
+
+![ConfusionMatrix](./ConfusionMatrix.png "Confusion Matrix")
+
+## Training Versus Validation Loss
+
+![TrainingVsValidationLoss](./TrainingVsValidationLoss.png "Training Vs Validation Loss")
+
+## Precision, Recall, and F1 Performance Measures
+
+![PrecisionRecallandF1](./P_R_F1.png "Precision, Recall, and F1 Performance Measures")
+
+# Discussion
+
+# Future Work
