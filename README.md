@@ -82,7 +82,7 @@ If you chose to run the file locally, you will need to instead replace the file 
 
 # Data 
 ## Original Data
-We used the LitBank dataset that can be found online at: [LitBank](https://github.com/dbamman/litbank). This dataset contains approximately 2,000 words from 100 English works of fiction (novels and short stories) drawn from the Project Gutenberg public domain found online here: [Project Gutenberg](https://www.gutenberg.org/). The LitBank dataset uses named entities that cover six of the ACE 2005 classes in text:
+We used the LitBank dataset that can be found online at: [LitBank](https://github.com/dbamman/litbank). This dataset contains words from 100 English works of fiction (novels and short stories) drawn from the Project Gutenberg public domain found online here: [Project Gutenberg](https://www.gutenberg.org/). The LitBank dataset uses named entities that cover six of the ACE 2005 classes in text:
 * People (PER): *Tom Sawyer*, *her daughter*
 * Facilities (FAC): *the house*, *the kitchen*
 * Geo-political entities (GPE): *London*, *the village*
