@@ -12,7 +12,7 @@ http://ecotrust-canada.github.io/markdown-toc/
 
 # Project description
 
-The objective of this project is to perform information extraction by applying a trained model to tweets we pull from Twitter. We were allowed to train our model to complete the information extraction task with a dataset of our choice. Information Extraction is a classification problem in which our code will try to determine whether a word or symbol is considered a Named Entity. Named Entities in our dataset cover six of the ACE 2005 categories in text:
+The objective of this project is to perform information extraction by applying a trained model to tweets we pull from Twitter. We were allowed to train our model to complete the information extraction task with a dataset of our choice. Information extraction is a classification problem in which our code will try to determine whether a word or symbol is considered a named entity. Named entities in our dataset cover six of the ACE 2005 classes in text:
 * People (PER): *Tom Sawyer*, *her daughter*
 * Facilities (FAC): *the house*, *the kitchen*
 * Geo-political entities (GPE): *London*, *the village*
@@ -20,9 +20,9 @@ The objective of this project is to perform information extraction by applying a
 * Vehicles (VEH): *the ship*, *the car*
 * Organizations (ORG): *the army*, *the Church*
 
-A named entity can be of the 6 above classes and is preceded either by a "B-" or an "I-". A "B-" denotes that the word is the beginning of a named entity and an "I-" denotes that the word is an inclusive member of the named entity. If a word or symbol is not considerred any of the above enities it is marked with an *O*. Given any sequence of words or symbols, reffered to as tokens, our model will label each token as one of the named entity classes or as an *O*. Then we must analyze the accuracy of our model. We do this by comparing the model’s predictions to labels made by humans which are assumed to be correct. The model for Information Extraction is a collection of Bidirectional Long Short Term Memory Units ( BiLSTM ) with a Conditional Random Field ( CRF ) layer for Classification. 
+A named entity can be of the 6 above classes and is preceded either by a "B-" or an "I-". A "B-" denotes that the word is the beginning of a named entity and an "I-" denotes that the word is an inclusive member of the named entity. If a word or symbol is not considered any of the above entities it is marked with an *O*. Given any sequence of words or symbols, referred to as tokens, our model will label each token as one of the named entity classes or as an *O*. Then we must analyze the accuracy of our model. We do this by comparing the model’s predictions to labels made by humans which are assumed to be the correct classification. The model for information extraction is a collection of Bidirectional Long Short Term Memory Units ( BiLSTM ) with a Conditional Random Field ( CRF ) layer for classification. 
 
-The whole process begins by preprocessing a large training dataset. The data used for this project can be found in the Data sub directory. The dataset contains sentences from 100 literary works in which each token has been classified. These sentences must be preprocessed before being vectorized and embedded. After its transformation, the data can then be given to the BiLSTM + CRF model. The model will learn from the data how to predict whether a token is a Named Entity or not and, if so, what named entity it is. We then collect the predictions of our model on a test set of data, and for our results we calculate the precision, recall, F1, and accuracy scores of our predictions.
+The whole process is a series of steps beginning by preprocessing a large training dataset. The data used for this project can be found in the Data sub-directory. The dataset contains sentences from 100 literary works in which every token has been classified. These sentences must be preprocessed before being vectorized and embedded. After its transformation, the data can then be given to the BiLSTM + CRF model. The model will learn from the data how to predict whether a token is a named entity or not and, if so, what named entity it is. We then collect the predictions of our model on a test set of data, and for our results we calculate the precision, recall, F1, and accuracy scores of our predictions.
 
 Each of these steps are explained in further detail in the sections below.
 
@@ -37,20 +37,20 @@ Follow the same instructions for downloading the cleaned data set file called Pr
 We will also need the glove.6B.200d.txt file which can be downloaded from 
 <small><i><a href='https://www.kaggle.com/datasets/incorpes/glove6b200d'>glove.6b.200d.txt</a></i></small>
  
-This file may be too big to download, however, so you can use this public google drive link https://drive.google.com/file/d/1VGGnJMZZgBG0_MCqb2mafvzgMT1NDJ1i/view?usp=share_link to upload the file to your drive. Click the link and use ZIP Extractor to extract the file to Google Drive.
+This file may be too big to download, however, so you can use this public Google Drive link https://drive.google.com/file/d/1VGGnJMZZgBG0_MCqb2mafvzgMT1NDJ1i/view?usp=share_link to upload the file to your drive. Click the link and use ZIP Extractor to extract the file to Google Drive.
 
 
 <p align="center">
  <img src="./ZIP Extractor.png" width="750" height="500">
 </p>
 
-You can skip the downloads of  _____________ and ProcessedLitBankDataset.csv if you already have downloaded the whole project as a zip file. This can be done by clicking on the green button that says "code" in the main directory of the github page (same directory as this README), and then clicking on "Download ZIP".
+You can skip the downloads of  __________ and ProcessedLitBankDataset.csv if you already have downloaded the whole project as a zip file. This can be done by clicking on the green button that says "code" in the main directory of the github page (same directory as this README), and then clicking on "Download ZIP".
 
-We recommend using Google Colab to run the code. To do so, go to google drive at drive.google.com. From your downloads on your local machine, upload the two files, _____________ and ProcessedLitBankDataset.csv, to your google drive. 
+We recommend using Google Colab to run the code. To do so, go to Google Drive at drive.google.com. From your downloads on your local machine, upload the two files, __________ and ProcessedLitBankDataset.csv, to your Google Drive. 
 
 Do the same for glove.6B.200d.txt either from your own downloads or the previous link. Make sure they are uploaded to your MyDrive folder in Google Drive.
 
-If you choose to run the code locally, you must install Python and the necessary packages for tensorflow, numpy, keras, and sklearn.
+If you choose to run the code locally, you must install Python and the necessary packages for TensorFlow, Numpy, Keras, and SKLearn.
 Tutorials for installing Python and these libraries can be found at these links:
 
 https://realpython.com/installing-python/
@@ -65,14 +65,14 @@ https://scikit-learn.org/stable/install.html
 
 # Usage instructions
 
-Open the __________________ file in your google drive. There are two lines of code that need to be uncommented before running in Google Colab. These are lines ______ and ______. You can also read through the comments for more guidance through this process.
+Open the __________ file in your Google Drive. There are two lines of code that need to be uncommented before running in Google Colab. These are lines __________ and __________. You can also read through the comments for more guidance through this process.
 
 Then click on the runtime tab, and click run all.
 
-If you chose to run the file locally, you will need to instead replace the file path names on lines _____ and _______ with the local file paths. This also means that you will have to download the glove.6B.200d.txt file from <small><i><a href='https://www.kaggle.com/datasets/incorpes/glove6b200d'>glove.6b.200d.txt'>glove.6B.200d.txt</a></i></small>. Read through the comments at the top of the page in ________________ for more details on changing the path names. You can export ________________ as a .py file and then run it on the command line by navigating to the directory containing the file and using the command: python3 __________________
+If you chose to run the file locally, you will need to instead replace the file path names on lines __________ and __________ with the local file paths. This also means that you will have to download the glove.6B.200d.txt file from <small><i><a href='https://www.kaggle.com/datasets/incorpes/glove6b200d'>glove.6b.200d.txt'>glove.6B.200d.txt</a></i></small>. Read through the comments at the top of the page in __________ for more details on changing the path names. You can export __________ as a .py file and then run it on the command line by navigating to the directory containing the file and using the command: python3 __________
 
 # Method
-## Preprocessing:
+## Preprocessing
 
 ## Feature Extraction and Vectorization
 
@@ -82,7 +82,7 @@ If you chose to run the file locally, you will need to instead replace the file 
 
 # Data 
 ## Original Data
-We use dthe LitBank dataset that can be found online at: [LitBank](https://github.com/dbamman/litbank). This dataset contains approximately 2,000 words from 100 English works of fictions (novels and short stories) drawn from the Project Gutenberg public domain found online here: [Project Gutenberg](https://www.gutenberg.org/). The Litbank dataset uses Named Entities that cover six of the ACE 2005 categories in text:
+We used the LitBank dataset that can be found online at: [LitBank](https://github.com/dbamman/litbank). This dataset contains approximately 2,000 words from 100 English works of fiction (novels and short stories) drawn from the Project Gutenberg public domain found online here: [Project Gutenberg](https://www.gutenberg.org/). The LitBank dataset uses named entities that cover six of the ACE 2005 classes in text:
 * People (PER): *Tom Sawyer*, *her daughter*
 * Facilities (FAC): *the house*, *the kitchen*
 * Geo-political entities (GPE): *London*, *the village*
@@ -90,7 +90,7 @@ We use dthe LitBank dataset that can be found online at: [LitBank](https://githu
 * Vehicles (VEH): *the ship*, *the car*
 * Organizations (ORG): *the army*, *the Church*
 
-If a word or symbol is not considerred any of the above enities it is marked with an *O*. The 100 files can be found in the  Data sub-directory in the Original Data ( TSV Format ) folder. Each novels or short storiy is stored as an individual TSV file.
+If a word or symbol is not considered any of the above entities it is marked with an *O*. The 100 English works of fiction can be found in the Data sub-directory in the Original Data ( TSV Format ) folder. Each novel or short story is stored as an individual TSV file.
 
 The original dataset has nested named entities. For example, 
 
@@ -99,9 +99,9 @@ The original dataset has nested named entities. For example,
 </p>
 
 ## Cleaned Data
-After using the "collapseNestedNamedEntities.py" python script that we wrote we obtained a cleaner version of the LitBank dataset. Specifically we did the following preproccesing tasks to clean the data into the format we wanted for training our model:
-* We dealt with these by collapsing the nested layers and preferring the highest non *O* entity for each token. 
-* We concatenated every sentence from every book into one large file to better be used for training our model.
+The "collapseNestedNamedEntities.py" python script that we wrote generated a cleaner version of the LitBank dataset. Specifically we did the following preprocessing tasks to clean the data into the format we wanted for training our model:
+* We dealt with these by collapsing the nested layers, selecting the highest non *O* named entity for each token. 
+* We appended every sentence from every book into one large file to better be used for training our model.
 
 This clean version of the dataset can be found in the Data sub-directory as "ProcessedLitBankDataset.csv"
 
