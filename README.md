@@ -12,7 +12,7 @@ http://ecotrust-canada.github.io/markdown-toc/
 
 # Project description
 
-This program was created with the intention of combining what we have learned so far in the course to build a model to classify named entities from a training corpus. Then perform information extraction by applying the trained model to tweets we pull from Twitter. We were allowed to train our model to complete the information extraction task with a dataset of our choice. 
+This program was created with the intention of combining what we have learned so far in the VCU Advanced Natural Language Processing course to build a model to classify named entities from a training corpus. Then to perform information extraction by applying the trained model to tweets we pull from Twitter. We were allowed to train our model to complete the information extraction task with a dataset of our choice. 
 
 Information extraction is a classification problem in which our code will try to determine whether a word or symbol is considered a named entity. Named entities in our dataset cover six of the ACE 2005 classes in text:
 * People (PER): *Tom Sawyer*, *her daughter*
@@ -30,11 +30,11 @@ Each of these steps are explained in further detail in the sections below.
 
 # Installation instructions
 
-Begin by downloading the NER_on_Preprocessed_LitBank_Dataset.ipynb file from in the Code Sub-directory. You can follow this tutorial for downloading a single file from github: 
+Begin by downloading the NER_on_Preprocessed_LitBank_Dataset.ipynb file from in the Code sub-directory. You can follow this tutorial for downloading a single file from github: 
 
 <small><i><a href='https://www.wikihow.com/Download-a-File-from-GitHub'>Downloading a Single File From GitHib</a></i></small>
 
-Follow the same instructions for downloading the cleaned data set file called ProcessedLitBankDataset.csv found in the Data Sub-directory.
+Follow the same instructions for downloading the cleaned data set file called ProcessedLitBankDataset.csv found in the Data sub-directory.
 
 You will also need the glove.6B.200d.txt file which can be downloaded from 
 <small><i><a href='https://www.kaggle.com/datasets/incorpes/glove6b200d'>glove.6b.200d.txt</a></i></small>
@@ -66,7 +66,7 @@ https://scikit-learn.org/stable/install.html
 
 # Usage instructions
 
-Open the NER_on_Preprocessed_LitBank_Dataset.ipynb file in your Google Drive. There are two lines of code that need to be uncommented before running in Google Colab. Read through the comments for more guidance through this process.
+Open the NER_on_Preprocessed_LitBank_Dataset.ipynb file in your Google Drive. There are two lines of code that need to be uncommented before running in Google Colab. Additionally the BASE FILE PATH must be changed.  Read through the comments for more guidance through this process.
 
 Then click on the runtime tab, and click run all.
 
@@ -74,12 +74,23 @@ If you chose to run the file locally, you will need to instead replace the file 
 
 # Method
 ## Preprocessing
+For preprocessing on the dataset, once the nested entities were collapsed we needed to extract each sentence from the dataset. We built a custom class to handle extracting each sentence from the dataset and return them as lists of 2-tuple pairs. 
 
 ## Feature Extraction and Vectorization
+Once the data was extracted it is necessary to turn the words of the tweet into a numerical representations that can be used to train a machine learning model. To build these numerical representations we first needed to build some helper tools.
 
-### Build some tools: Static Word Embeddings with Glove
+## Build some tools: Static Word Embeddings with Glove
+To determine the numerical representations of sentences it is neccesary to first define some useful tools. We used ``GloVe: Global Vectors for Word Representation`` to construct two tools that together can be used to convert each token found within a sentence into a numerical vector. The collection of all the individual token vectors then makeup the numerical representation of a sentence. 
+
+The first tool is the ``embedding array``. This array consists of the individual token vectors that are in the GloVe database.
+
+The second tool that goes right along with the first one is the ``index mapping``. This tool allows for the tokens in the sentences to be converted into a single dimensional numerical vector that acts and the intermediary between tokens and token embeddings. It contains the index location for every word that is in the Embeddings Array. For example, the word representation for ``Dogs`` might be stored in the second line in the ``Embeddings Array``. So in the ``Index Mapping`` the word ``Dogs`` would be matched with the number 2, representing its storage location in ``Embeddings Array``. 
 
 ## Information Extraction / Classification using machine learning
+
+For classification we used a collection of Bidirectional Long Short Term Memory Units ( BiLSTM ) with a Conditional Random Field ( CRF ). We used the following layers:
+
+![Layers](./Layers.png "Model Layers")
 
 # Data 
 ## Original Data
