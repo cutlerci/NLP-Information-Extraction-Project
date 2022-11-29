@@ -74,10 +74,10 @@ If you chose to run the file locally, you will need to instead replace the file 
 
 # Method
 ## Preprocessing
-For preprocessing on the dataset, once the nested entities were collapsed we needed to extract each sentence from the dataset. We built a custom class to handle extracting each sentence from the dataset and return them as lists of 2-tuple pairs. 
+For preprocessing on the dataset, we collapsed the nested named entities and then we extracted each sentence. We built a custom class object to handle extracting each sentence from the dataset and return them as lists of 2-tuple pairs. 
 
 ## Feature Extraction and Vectorization
-Once the data was extracted it is necessary to turn the words of the tweet into a numerical representations that can be used to train a machine learning model. To build these numerical representations we first needed to build some helper tools.
+Once the data was extracted it is necessary to turn the tokens of each sentence into numerical representations that can be used to train a machine learning model. To build these numerical representations we first needed to build some helper tools.
 
 ## Build some tools: Static Word Embeddings with Glove
 To determine the numerical representations of sentences it is neccesary to first define some useful tools. We used ``GloVe: Global Vectors for Word Representation`` to construct two tools that together can be used to convert each token found within a sentence into a numerical vector. The collection of all the individual token vectors then makeup the numerical representation of a sentence. 
@@ -133,5 +133,16 @@ We split the data set into three pieces for use in training and evaluation of th
 ![PrecisionRecallandF1](./P_R_F1.png "Precision, Recall, and F1 Performance Measures")
 
 # Discussion
+We wanted to see how well a model trained on English work of Literature would do on Tweets. We downloaded ~2500 tweets from Twitter, maually annotated them, and then evaluated performance of our model. The results are as follows:
+## Confusion Matrix
+
+![ConfusionMatrix](./TweetConfusionMatrix.png "Tweet Confusion Matrix")
+
+## Precision, Recall, and F1 Performance Measures
+
+![PrecisionRecallandF1](./TweetP_R_F1.png "Tweet Precision, Recall, and F1 Performance Measures")
+
+With regard to the LitBank Data set, we noticed that it contained many terms that don’t exactly match modern speech patterns. When dealing with the Tweets we pulled from Twitter, despite filtering for Retweets one useless advertising tweet appeared ~250 times with enough variation to evade our duplicate removal tool. Additionally with tweets the sequences of tokens are usually much shorter that sequences from books, so there was a large amount of padding required for the tweet sequences for them to work with our model. Overall, we found that named entity recognition can be difficult largely due to the unbalnce between the classes of named entities. 
 
 # Future Work
+Given unlimited time and resources, we would expand this project in a few ways. We would remove sentences with mostly O’s. We would need to determine what ratio of O’s to entities should be removed. For exampe, if there are 500 times more O’s than ORG’s in the entirety the set of sentences, would removing a sentence with 49’s O’s and one ORG actually help with predicting ORG’s. Additionally, we would derive a method to better deal with nested named entities. 
